@@ -17,11 +17,12 @@ class Home extends BaseController
     // call the node.js script to scrape calendly page
     $script_path = realpath(FCPATH . '../scrapers/scrape-calendly.js');
     $command = "node " . escapeshellarg($script_path) ." {$escaped_url} 2>&1";
-    $output = shell_exec($command);
+    $avail_data = shell_exec($command);
 
-    echo $output;
+    $parsed_data = json_decode($avail_data, true);
+    $data["avail_data"] = $parsed_data;
 
     return view('templates/header')
-    . view('pages/home');
+    . view('pages/home', $data);
   }
 }
