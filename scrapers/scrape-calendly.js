@@ -99,9 +99,9 @@ const scrapeCalendly = async () => {
               timeSlots.push(time);
             }
 
-            slots[year][calendarMonth].push({ day, timeSlots });
+            slots[year][calendarMonth].push({ monthDay: day, timeSlots });
           } else {
-            slots[year][calendarMonth].push({ day });
+            slots[year][calendarMonth].push({ monthDay: day });
           }
 
           if (currentDateStr === endDateStr) {

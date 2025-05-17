@@ -5,8 +5,7 @@ namespace App\Controllers;
 class Home extends BaseController
 {
   public function index(): string {
-    return view('templates/header')
-        . view('pages/home');
+    return view('pages/home');
   }
 
   public function extract_availability() {
@@ -22,7 +21,6 @@ class Home extends BaseController
     $parsed_data = json_decode($avail_data, true);
     $data["avail_data"] = $parsed_data;
 
-    return view('templates/header')
-    . view('pages/home', $data);
+    return view('pages/home', $data);
   }
 }
